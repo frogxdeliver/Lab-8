@@ -164,8 +164,8 @@ void BST::RemoveRootMatch(){
 	if(root != NULL){
 		node* delPtr = root;
 		int rootKey = root->key;
-		int smallestInRightSubTree;
-		
+		int smallestInRightSubtree;
+
 		//Case 0-0 children
 		if(root->left == NULL && root->right == NULL){
 			root = NULL;
@@ -195,10 +195,67 @@ void BST::RemoveRootMatch(){
 			RemoveNodePrivate(smallestInRightSubtree, root);
 			root->key = smallestInRightSubtree;
 			cout << "The root key containing key " << rootKey <<
-					"was overwritten with key" << root->key << endl;
+					" was overwritten with key " << root->key << endl;
 		}
 		
 	}else{
 		cout << "Can not remove root. The tree is empty\n";
+	}
+}
+
+void BST::RemoveMatch(node* parent, node* match, bool left){
+	if(root != NULL){
+		node* delPtr;
+		int matchKey = match->key;
+		int smallestInRightSubtree;
+		
+		//Case 0-0 Children
+		if(match->left == NULL && match->right == NULL){
+			delPtr = match;
+			left == true ? parent->left = NULL : parent->right = NULL;
+			delete delPtr;
+			cout << "The node containing key " << matchKey << " was removed\n";
+		}
+		
+		//Case 1-1 Child
+		else if(match->left == NULL && match->right != NULL){
+			left == true ? parent->left = match->right : parent->left = match->right;
+			match->right = NULL;
+			delPtr = match;
+			delete delPtr;
+			cout << "The node containing key " << matchKey << " was removed\n";
+		}else if(match->left == NULL && match->right != NULL){
+			left == true ? parent->left = match->right : parent->right = match->left;
+			match->left = NULL;
+			delPtr = match;
+			delete delPtr;
+			cout << "The node containing key " << matchKey << " was removed\n";
+		}
+		
+		//Case 2-2 Children
+		else{
+			smallestInRightSubtree = FindSmallestPrivate(match->right);
+			RemoveNodePrivate(smallestInRightSubtree, match);
+			match->key = smallestInRightSubtree;
+		}
+	}else{
+		cout << "Can not remove match. The tree is empty\n";
+	}
+}
+
+BST::~BST(){
+	RemoveSubtree(root);
+}
+
+void BST::RemoveSubtree(node* Ptr){
+	if(Ptr != NULL){
+		if(Ptr->left != NULL){
+			RemoveSubtree(Ptr->left);
+		}
+		if(Ptr->right != NULL){
+			RemoveSubtree(Ptr->right);
+		}
+		cout << "Deleting the node containing key " << Ptr->key << endl;
+		delete Ptr;
 	}
 }

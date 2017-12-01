@@ -16,10 +16,12 @@ class BST{
 	void RemoveNodePrivate(int key, node* parent);
 	void RemoveRootMatch();
 	void RemoveMatch(node* parent, node* match, bool left);
+	void RemoveSubtree(node* Ptr);
 	int FindSmallestPrivate(node* Ptr);
 		
 	public:
 		BST();
+		~BST(); //when a BST goes out of scope
 		void AddLeaf(int key);
 		void PrintInOrder();
 		void PrintChildren(int key);
