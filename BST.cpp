@@ -75,6 +75,14 @@ BST::node* BST::ReturnNode(int key){
 	return ReturnNodePrivate(key, root);
 }
 
+void BST::Search(int key){
+	if (ReturnNodePrivate(key, root)){
+		cout << "The value: " << key << " is in the tree\n";
+	}else{
+		cout << "The value: " << key << " is not in the tree\n";
+	}
+}
+
 BST::node* BST::ReturnNodePrivate(int key, node* Ptr){
 	if(Ptr != NULL){
 		if(Ptr != NULL){

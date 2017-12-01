@@ -26,6 +26,7 @@ class BST{
 		void PrintInOrder();
 		void PrintChildren(int key);
 		void RemoveNode(int key);
+		void Search(int key);
 		int ReturnRootKey();
 		int FindSmallest();
 };
