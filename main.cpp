@@ -32,15 +32,13 @@ int main(){
 	myTree.PrintInOrder();
 	cout << endl;
 	
-	//Finding a node (Deleting it & then replacing it, since we already have a deltion function, but making 2 more just for a search feature seemed like too much work, lel)
+	//Finding a node
 	if(searchValue != -1){
 		cout << "Find node in list: ";
 		cin >> searchValue;
 		{
 			if (searchValue != -1){
 				cout << endl;
-				//myTree.RemoveNode(searchValue);
-				//myTree.AddLeaf(searchValue);
 				myTree.Search(searchValue);
 				myTree.PrintInOrder();
 				cout << endl;
