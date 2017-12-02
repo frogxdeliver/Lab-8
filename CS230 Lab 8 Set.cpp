@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-string key, answer,answer2;
+string key, answer, answer2;
 int i;
 
 std::set<std::string> Keyring;
@@ -42,7 +42,7 @@ cout<<"\nAdd Another Key. Use _ For Spaces"<<endl;
 cin>>key;
 Keyring.insert(key);
 }
-if(Keyring.insert(key).second)
+else if(Keyring.insert(key).second)
 {
 cout<<key<<" Successful Addition!"<<endl;
 }
