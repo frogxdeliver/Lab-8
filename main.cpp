@@ -2,7 +2,6 @@
 //tutorial used: https://www.youtube.com/watch?v=sf_9w653xdE&list=PLTxllHdfUq4d-DE16EDkpeb8Z68DU7Z_Q
 #include <iostream>
 #include <cstdlib>
-
 #include "BST.cpp"
 
 using namespace std;
