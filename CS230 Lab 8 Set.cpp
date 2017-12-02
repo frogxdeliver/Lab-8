@@ -77,6 +77,7 @@ cout<<"\nNew Keyring size is "<<Keyring.size()<<endl;
 
 //Set Searching
 cout<<"\nWant To Search For A Key y/n?"<<endl;
+cin >> answer2;
 
 if(answer2=="y")
 {
