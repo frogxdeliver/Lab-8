@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-string key, answer, answer2;
+string key, answer,answer2;
 int i;
 
 std::set<std::string> Keyring;
@@ -18,82 +18,78 @@ std::set<std::string> Keyring;
 //prompts user to insert elements in set
 for(i = 0; i < 5; i++)
 {
-cout<<"\nInsert a Key " <<i+1<<" Onto Key Ring"<<endl;
+cout<<"\nInsert Key " <<i+1<<" Onto Key Ring. Use _ For Spaces"<<endl;
 cin >>key;
 Keyring.insert(key);
+
 }
 //shows resulting key ring
-cout<<"\nHere is Completed Key Ring"<<endl;
+cout<<"\nHere is Completed Key Ring\n"<<endl;
 for(std::set<std::string>::iterator it=Keyring.begin(); it !=Keyring.end(); it++) //the '<' operator keeps UNIQUE elements in sorted order
 {
-std::cout<<" "<<"\n"<< *it; //
+std::cout<<" "<<"\n"<< *it; 
 }
-cout<<"\n\nKey Ring Size Is: "<<Keyring.size()<<" Keys"<<endl;
-
 
 
 //Set Deletion and Addition
 cout<<"\nWould You Like to Add or Delete From Key Ring?"<<endl;
 cout<<"\nType add or delete"<<endl;
 cin>>answer;
+
 if(answer=="add")
 {
 cout<<"\nAdd Another Key. Use _ For Spaces"<<endl;
 cin>>key;
 Keyring.insert(key);
-}
-else if(Keyring.insert(key).second)
-{
-cout<<key<<" Successful Addition!"<<endl;
-}
-else
-{
-  cout<<key<<" Duplicate Key Can't Be Added!"<<endl;
-}
-cout<<"\nThe New Keyring is below: \n"<<endl;
-for(std::set<std::string>::iterator it=Keyring.begin(); it !=Keyring.end(); it++)
-{
-std::cout<<" "<<"\n"<< *it; //
-}
-cout<<"\nNew Keyring size is "<<Keyring.size()<<endl;
 
-
-
-if(answer=="delete")
+	if(Keyring.insert(key).second) //checks to see if key already present in set
+	{
+	cout<<key<<" Successful Addition!"<<endl;
+	}	
+	else if(!Keyring.insert(key).second)
+	{
+	cout<<" Duplicate Key Can't Be Added!"<<endl;
+	}
+}
+else if(answer=="delete")
 {
 cout<<"\nDelete A Key. Use _ For Spaces"<<endl;
 cin>>key;
 Keyring.erase(key);
 cout<<"\nNew Keyring"<<endl;
+}
 
 for(std::set<std::string>::iterator it=Keyring.begin(); it !=Keyring.end(); it++)
 {
 std::cout<<" "<<"\n"<< *it;
 }
-}
-cout<<"\nNew Keyring size is "<<Keyring.size()<<endl;
-
-
+cout<<"\nKeyring size is "<<Keyring.size()<<endl;
 
 //Set Searching
 cout<<"\nWant To Search For A Key y/n?"<<endl;
-cin >> answer2;
+cin>>answer2;
 
 if(answer2=="y")
 {
 cout<<"\nSearch For A Key. Use _ For Spaces"<<endl;
 cout<<"\nWhere Is My..."<<endl;
-cin>>key; 
-cout<<" Key?"<<endl;
+cin>>key; cout<<" Key?"<<endl;
+std::set<std::string>::iterator it=Keyring.find(key);//iterates through set to find specified key
 
-std::set<std::string>::iterator it=Keyring.find(key);
-if(it !=Keyring.end())
+	if(it !=Keyring.end())
+	{
+	cout<<key<<" Key"<<" Found!"<<endl;
+	}
+	else
+	{
+	cout<<key<<" Key"<<" Not Found :("<<endl;
+	}
+}
+else if(answer2=="n")
 {
-cout<<key<<"\nFound!"<<endl;
-}}
-else
-	cout<<key<<"\nNot Found :("<<endl;
-
+return 0;
+}
 
 return 0;
+
 }
