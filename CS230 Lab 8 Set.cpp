@@ -83,16 +83,17 @@ if(answer2=="y")
 {
 cout<<"\nSearch For A Key. Use _ For Spaces"<<endl;
 cout<<"\nWhere Is My..."<<endl;
-cin>>key; cout<<" Key?"<<endl;
+cin>>key; 
+cout<<" Key?"<<endl;
 
 std::set<std::string>::iterator it=Keyring.find(key);
 if(it !=Keyring.end())
 {
 cout<<key<<"\nFound!"<<endl;
-}
+}}
 else
 	cout<<key<<"\nNot Found :("<<endl;
-}
+
 
 return 0;
 }
